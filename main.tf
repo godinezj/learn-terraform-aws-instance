@@ -18,6 +18,12 @@ resource "aws_instance" "bastion" {
   instance_type = "t2.micro"
   key_name      = "javier"
   subnet_id     = "subnet-a9d32fc2"
+  root_block_device {
+    encrypted = true
+  }
+  metadata_options {
+    http_tokens = "required"
+  }
   tags = {
     Name = "Bastion"
   }
@@ -28,6 +34,12 @@ resource "aws_instance" "app_server" {
   instance_type = "t2.micro"
   key_name      = "javier"
   subnet_id     = "subnet-00c81127c4cf2ac81"
+  root_block_device {
+    encrypted = true
+  }
+  metadata_options {
+    http_tokens = "required"
+  }
   tags = {
     Name = "appserver"
   }
