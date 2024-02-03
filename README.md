@@ -1,7 +1,28 @@
 # learn-terraform-aws-instance
-`tfsec` is pretty cool, here is the Actions output:
+`tfsec` is pretty cool
 
+Checkout `tfsec` GitHub action:
+.github/workflows/tgsec.yml:
+```
+name: tfsec
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  tfsec:
+    name: tfsec
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@master
+      - name: tfsec
+        uses: aquasecurity/tfsec-action@v1.0.0
+```
+
+Here is the Actions output of running `tfsec` by hand:
 ```
 tfsec is joining the Trivy family
 
